@@ -19,12 +19,11 @@
 - Editar transação 
 - Remover transação 
 - Obter extrato de transações 
-- Filtrar transações por categoria 
 ---
 ### **Cadastrar usuário**
 #### `POST` `/usuario`
 
-Essa é a rota que será utilizada para cadastrar um novo usuario no sistema.
+Essa é a rota que será utilizada para cadastrar um novo usuário no sistema.
 
 - **Requisição**  
     Sem parâmetros de rota ou de query.  
@@ -77,7 +76,7 @@ Essa é a rota que será utilizada para cadastrar um novo usuario no sistema.
 
 #### `POST` `/login`
 
-Essa é a rota que permite o usuario cadastrado realizar o login no sistema.
+Essa é a rota que permite o usuário cadastrado realizar o login no sistema.
 
 - **Requisição**  
     Sem parâmetros de rota ou de query.  
@@ -132,8 +131,7 @@ Essa é a rota que permite o usuario cadastrado realizar o login no sistema.
 
 #### `GET` `/usuario`
 
-Essa é a rota que será chamada quando o usuario quiser obter os dados do seu próprio perfil.  
-**Atenção!:** O usuário será identificado através do ID presente no token de autenticação.
+Essa é a rota que será chamada quando o usuário quiser obter os dados do seu próprio perfil.  
 
 - **Requisição**  
     Sem parâmetros de rota ou de query.  
@@ -182,7 +180,7 @@ Essa é a rota que será chamada quando o usuário quiser realizar alterações 
 
 - **Resposta**  
     Em caso de **sucesso**, não será enviado conteúdo no corpo (body) da resposta.  
-    Em caso de **falha na validação**, a resposta irá possuir **_status code_** apropriado, e em seu corpo (body) um objeto com uma propriedade **mensagem** que deverá possuir como valor um texto explicando o motivo da falha.
+    Em caso de **falha na validação**, a resposta irá possuir **_status code_** apropriado, e em seu corpo (body) um objeto com uma propriedade **mensagem** com um texto explicando o motivo da falha.
 
   - Validação dos campos obrigatórios:
     - nome
@@ -212,17 +210,15 @@ Essa é a rota que será chamada quando o usuário quiser realizar alterações 
 
 ```javascript
 {
-    "mensagem": "O e-mail informado já está sendo utilizado por outro usuário."
+    "mensagem": "O e-mail informado já está sendo utilizado por outro usuário!"
 }
 ```
----
-
 ---
 ### **Listar categorias**
 
 #### `GET` `/categoria`
 
-Essa é a rota que será chamada quando o usuario logado quiser listar todas as categorias cadastradas.
+Essa é a rota que será chamada quando o usuário logado quiser listar todas as categorias cadastradas.
 
 - **Requisição**  
     Sem parâmetros de rota ou de query.  
@@ -262,7 +258,7 @@ Essa é a rota que será chamada quando o usuario logado quiser listar todas as 
 
 #### `GET` `/transacao`
 
-Essa é a rota que será chamada quando o usuario logado quiser listar todas as suas transações cadastradas.  
+Essa é a rota que será chamada quando o usuário logado quiser listar todas as suas transações cadastradas.  
 
 - **Requisição**  
     Sem parâmetros de rota ou de query.  
@@ -270,7 +266,7 @@ Essa é a rota que será chamada quando o usuario logado quiser listar todas as 
 
 - **Resposta**  
     Em caso de **sucesso**, o corpo (body) da resposta irá possuir um array dos objetos (transações) encontrados.  
-    Em caso de **falha na validação**, a resposta irá possuir **_status code_** apropriado, e em seu corpo (body) um objeto com uma propriedade **mensagem** com um valor um texto explicando o motivo da falha.
+    Em caso de **falha na validação**, a resposta irá possuir **_status code_** apropriado, e em seu corpo (body) um objeto com uma propriedade **mensagem** com um texto explicando o motivo da falha.
 
   - O usuário será identificado através do ID presente no token de validação
   - O endpoint irá responder com um array de todas as transações associadas ao usuário. Caso não exista nenhuma transação associada ao usuário irá responder com array vazio.
@@ -317,14 +313,14 @@ Essa é a rota que será chamada quando o usuario logado quiser listar todas as 
 
 #### `GET` `/transacao/:id`
 
-Essa é a rota que será chamada quando o usuario logado quiser obter uma das suas transações cadastradas.  
+Essa é a rota que será chamada quando o usuário logado quiser obter uma das suas transações cadastradas.  
 
 - **Requisição**  
     Deverá ser enviado o ID da transação no parâmetro de rota do endpoint.  
     O corpo (body) da requisição não deverá possuir nenhum conteúdo.
 
 - **Resposta**  
-    Em caso de **sucesso**, o corpo (body) da irá deverá possuir um objeto que representa a transação encontrada, com todas as suas propriedades, conforme exemplo abaixo, acompanhado de **_status code_** apropriado.  
+    Em caso de **sucesso**, o corpo (body) da irá possuir um objeto que representa a transação encontrada, com todas as suas propriedades, conforme exemplo abaixo, acompanhado de **_status code_** apropriado.  
     Em caso de **falha na validação**, a resposta irá possuir **_status code_** apropriado, e em seu corpo (body) um objeto com uma propriedade **mensagem** com um texto explicando o motivo da falha.
 
   - Validação se existe transação para o id enviado como parâmetro na rota e se esta transação pertence ao usuário logado.
@@ -353,7 +349,7 @@ Essa é a rota que será chamada quando o usuario logado quiser obter uma das su
 
 ```javascript
 {
-    "mensagem": "Transação não encontrada."
+    "mensagem": "Transação não encontrada!"
 }
 ```
 ---
@@ -377,7 +373,7 @@ Essa é a rota que será utilizada para cadastrar uma transação associada ao u
     Em caso de **sucesso**, será enviado no corpo (body) da resposta, as informações da transação cadastrada, incluindo seu respectivo `id`.  
     Em caso de **falha na validação**, a resposta irá possuir **_status code_** apropriado, e em seu corpo (body) um objeto com uma propriedade **mensagem** com um texto explicando o motivo da falha.
 
-  - Validação os campos obrigatórios:
+  - Validação dos campos obrigatórios:
     - descricao
     - valor
     - data
@@ -425,7 +421,7 @@ Essa é a rota que será utilizada para cadastrar uma transação associada ao u
 
 #### `PUT` `/transacao/:id`
 
-Essa é a rota que será chamada quando o usuario logado quiser atualizar uma das suas transações cadastradas.  
+Essa é a rota que será chamada quando o usuário logado quiser atualizar uma das suas transações cadastradas.  
 
 - **Requisição**  
     Deverá ser enviado o ID da transação no parâmetro de rota do endpoint.  
@@ -473,7 +469,7 @@ Essa é a rota que será chamada quando o usuario logado quiser atualizar uma da
 
 ```javascript
 {
-    "mensagem": "Todos os campos obrigatórios devem ser informados."
+    "mensagem": "Todos os campos obrigatórios devem ser informados!"
 }
 ```
 ---
@@ -481,7 +477,7 @@ Essa é a rota que será chamada quando o usuario logado quiser atualizar uma da
 
 #### `DELETE` `/transacao/:id`
 
-Essa é a rota que será chamada quando o usuario logado quiser excluir uma das suas transações cadastradas.  
+Essa é a rota que será chamada quando o usuário logado quiser excluir uma das suas transações cadastradas.  
 
 - **Requisição**  
     Deverá ser enviado o ID da transação no parâmetro de rota do endpoint.  
@@ -517,7 +513,7 @@ Essa é a rota que será chamada quando o usuario logado quiser excluir uma das 
 
 #### `GET` `/transacao/extrato`
 
-Essa é a rota que será chamada quando o usuario logado quiser obter o extrato de todas as suas transações cadastradas.
+Essa é a rota que será chamada quando o usuário logado quiser obter o extrato de todas as suas transações cadastradas.
 
 - **Requisição**  
     Sem parâmetros de rota ou de query.  
