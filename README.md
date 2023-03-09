@@ -294,7 +294,7 @@ Essa é a rota que será chamada quando o usuario logado quiser listar todas as 
         data: "2022-03-23T15:35:00.000Z",
         usuario_id: 5,
         categoria_id: 4,
-        categoria_nome: "Roupas",
+        categoria_nome: "Roupas"
     },
     {
         id: 3,
@@ -304,7 +304,7 @@ Essa é a rota que será chamada quando o usuario logado quiser listar todas as 
         data: "2022-03-24T15:30:00.000Z",
         usuario_id: 5,
         categoria_id: 6,
-        categoria_nome: "Salários",
+        categoria_nome: "Salários"
     },
 ]
 ```
@@ -347,7 +347,7 @@ Essa é a rota que será chamada quando o usuario logado quiser obter uma das su
     "data": "2022-03-24T15:30:00.000Z",
     "usuario_id": 5,
     "categoria_id": 6,
-    "categoria_nome": "Salários",
+    "categoria_nome": "Salários"
 }
 ```
 
@@ -411,7 +411,7 @@ Essa é a rota que será utilizada para cadastrar uma transação associada ao u
     "data": "2022-03-24T15:30:00.000Z",
     "usuario_id": 5,
     "categoria_id": 6,
-    "categoria_nome": "Salários",
+    "categoria_nome": "Salários"
 }
 ```
 
