@@ -19,6 +19,7 @@
 - Editar transação 
 - Remover transação 
 - Obter extrato de transações 
+- Filtrar transações por categoria
 ---
 ### **Cadastrar usuário**
 #### `POST` `/usuario`
@@ -540,4 +541,58 @@ Essa é a rota que será chamada quando o usuário logado quiser obter o extrato
  "entrada": 300000,
  "saida": 15800
 }
+```
+---
+### **Filtrar transações por categoria**
+
+Na funcionalidade de listagem de transações do usuário logado (**GET /transacao**), foi incluso um parâmetro do tipo query **filtro** para que seja possível consultar apenas transações das categorias informadas.
+
+- **Requisição**  
+    Parâmetro opcional do tipo query **filtro**.
+    Não deverá possuir conteúdo no corpo (body) da requisição.
+
+- **Resposta**  
+    Em caso de **sucesso**, o corpo (body) da resposta irá possuir um array dos objetos (transações) encontradas.  
+    Em caso de **falha na validação**, a resposta irá possuir **_status code_** apropriado, e em seu corpo (body) um objeto com uma propriedade **mensagem** com um texto explicando o motivo da falha.
+
+  - O usuário será identificado através do ID presente no token de validação
+  - O parâmetro opcional do tipo query **filtro**, quando enviado, será sempre um array contendo a descrição de uma ou mais categorias.
+  - O endpoint irá responder com um array de todas as transações associadas ao usuário que sejam da categorias passadas no parâmetro query. Caso não exista nenhuma transação associada ao usuário irá responder com array vazio.
+
+#### **Exemplo de requisição**
+
+```javascript
+// GET /transacao?filtro[]=roupas&filtro[]=salários
+// Sem conteúdo no corpo (body) da requisição
+```
+
+#### **Exemplos de resposta**
+
+```javascript
+[
+    {
+        id: 1,
+        tipo: "saida",
+        descricao: "Sapato",
+        valor: 15800,
+        data: "2022-03-23T15:35:00.000Z",
+        usuario_id: 5,
+        categoria_id: 11,
+        categoria_nome: "Roupas",
+    },
+    {
+        id: 3,
+        tipo: "entrada",
+        descricao: "Salário",
+        valor: 300000,
+        data: "2022-03-24T15:30:00.000Z",
+        usuario_id: 5,
+        categoria_id: 14,
+        categoria_nome: "Salário",
+    },
+]
+```
+
+```javascript
+[]
 ```
